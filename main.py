@@ -40,6 +40,28 @@ while opcao != 3:
         # Apresenta os jogadores e anuncia o início da partida.
         print(f"Muito bem, jogador {jg1} e jogador {jg2}, QUE COMECEM OS JOGOS!!!\n")
 
+        #!!!!! Sistema para escolher o jogador que vai iniciar de forma aleatoria. !!!!!
+        #
+        #
+        #
+        #
+
+        # Apresentação da tabela/matriz de posicionamento dos barcos.
+        print("-=" * 20)
+        print(f"TURNO DO JOGADOR: {jg1}")
+        print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
+        print("-=" * 20)
+        print()
+
+        # Exibição do tabuleiro 6x6 em branco antes do posicionamento
+        print("    1   2   3   4   5   6")
+        for i in range(6):
+            print(i + 1, end="  ") # Imprime o número da linha na lateral
+            for j in range(6):
+                print("[~]", end=" ")
+            print()
+        print()
+
         # Verifica se pelo menos um dos jogadores está com 0 vidas.
         # Como as vidas começam em 0, essa condição será verdadeira, então será usada mais depois.
         if vidajg1 == 0 or vidajg2 == 0:
