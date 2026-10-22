@@ -1,99 +1,98 @@
-# Cria duas variáveis para representar as vidas dos jogadores para ser usado depois.
-# As duas começam com o valor 0.
+# Define a quantidade inicial de vidas de cada jogador.
 vidajg1 = vidajg2 = 4
 
 # Exibe o título do jogo.
-# O operador * repete o texto "-=" vinte vezes.
-print("-=" * 20)
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 print("JOGO DA BATALHA NAVAL")
-print("-=" * 20)
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 
-# Define a opção inicial como 0 para que o menu comece.
+# Mantém o menu ativo até o usuário escolher a opção 3.
 opcao = 0
 
-# Repete o menu enquanto o jogador não escolher a opção 3 (Sair).
 while opcao != 3:
 
-    # Exibe as opções disponíveis no menu principal.
+    # Exibe o menu principal e recebe a opção escolhida.
     print("Escolha uma opção:")
     print("[ 1 ] Jogar")
     print("[ 2 ] Regras")
     print("[ 3 ] Sair")
-    print("-=" * 20)
+    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 
-    # Recebe a opção digitada pelo usuário.
-    # input() recebe o texto e int() tenta convertê-lo em número inteiro para análise.
+    # Converte a opção digitada para um número inteiro.
     opcao = int(input("Digite sua escolha: "))
 
-    # Verifica se o usuário escolheu iniciar uma partida.
     if opcao == 1:
 
-        print("-+" * 20)
+        print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
-        # Solicita os nomes dos dois jogadores.
+        # Solicita os nomes dos jogadores.
         jg1 = input("Digite o nome do 1º jogador: ")
         jg2 = input("Digite o nome do 2º jogador: ")
 
-        print("-+" * 20)
+        print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
-        # !!!!! Sistema para escolher o jogador que vai iniciar de forma aleatoria. !!!!!
+        # Escolhe quem inicia a partida com base nos números digitados.
         escolhajg1 = int(input(f"Jogador {jg1}, digite um número de 1 a 10: "))
         escolhajg2 = int(input(f"Jogador {jg2} digite um número de 1 a 10: "))
         rst = (escolhajg1 * escolhajg2) % 2
 
+        # O resultado par escolhe o primeiro jogador; o ímpar escolhe o segundo.
         if rst == 0:
             vezjg = "jg1"
             print(f"O jogador que vai iniciar a partida é o {jg1}! ")
         else:
             vezjg = "jg2"
-            print(f"O jogador que vai iniciar a partida é o {jg2}! ")
-        print("-+" * 20)
+            print(f"O jogador que vai iniciar a partida é o {jg2}!")
 
+        print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
-
-        # Apresenta os jogadores e anuncia o início da partida.
+        # Anuncia o início da partida.
         print(f"Muito bem, jogador {jg1} e jogador {jg2}, QUE COMECEM OS JOGOS!!!\n")
 
-        # Apresentação da tabela/matriz de posicionamento dos barcos.
-        print("-=" * 20)
+        # Exibe o tabuleiro vazio do primeiro jogador.
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print(f"CARO JOGADOR {jg1}")
         print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-        print("-=" * 20)
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print()
 
-        # Exibição do tabuleiro 6x6 em branco antes do posicionamento
+        # Monta um tabuleiro vazio de 6 linhas por 6 colunas.
         print("    1   2   3   4   5   6")
         for i in range(6):
-            print(i + 1, end="  ")  # Imprime o número da linha na lateral
+            print(i + 1, end="  ")
             for j in range(6):
                 print("[~]", end=" ")
             print()
         print()
 
-        print("-=" * 20)
+        # Exibe o tabuleiro vazio do segundo jogador.
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print(f"CARO JOGADOR {jg2}")
         print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-        print("-=" * 20)
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print()
 
-        # Exibição do tabuleiro 6x6 em branco antes do posicionamento
+        # Monta o segundo tabuleiro vazio de 6 linhas por 6 colunas.
         print("    1   2   3   4   5   6")
         for i in range(6):
-            print(i + 1, end="  ")  # Imprime o número da linha na lateral
+            print(i + 1, end="  ")
             for j in range(6):
                 print("[~]", end=" ")
             print()
         print()
 
+        # Mantém os turnos enquanto pelo menos um jogador tiver vidas.
         while vidajg1 > 0 or vidajg2 > 0:
+
             if vezjg == "jg1":
-                print("-=" * 20)
+
+                print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                 print(f"TURNO DO JOGADOR: {jg1}")
                 print("DIGITE O COMANDO DE ATAQUE COM BASE NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-                print("-=" * 20)
+                print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                 print()
 
-                # Exibição do tabuleiro 6x6 para o ataque do jogador
+                # Exibe o tabuleiro durante o turno do primeiro jogador.
                 print("    1   2   3   4   5   6")
                 for i in range(6):
                     print(i + 1, end="  ")
@@ -101,16 +100,19 @@ while opcao != 3:
                         print("[~]", end=" ")
                     print()
                 print()
+
+                # Recebe a coordenada de ataque do primeiro jogador.
                 ataquejg1 = input("COMANDO COORDENADA")
 
             elif vezjg == "jg2":
-                print("-=" * 20)
+
+                print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                 print(f"TURNO DO JOGADOR: {jg2}")
                 print("DIGITE O COMANDO DE ATAQUE COM BASE NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-                print("-=" * 20)
+                print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                 print()
 
-                # Exibição do tabuleiro 6x6 para o ataque do jogador
+                # Exibe o tabuleiro durante o turno do segundo jogador.
                 print("    1   2   3   4   5   6")
                 for i in range(6):
                     print(i + 1, end="  ")
@@ -118,25 +120,23 @@ while opcao != 3:
                         print("[~]", end=" ")
                     print()
                 print()
+
+                # Recebe a coordenada de ataque do segundo jogador.
                 ataquejg2 = input("COMANDO COORDENADA")
 
+            # Análise das estatísticas dos jogadores será realizada aqui.
 
-            # analisando a estatiticas dos jogadores
-
-
-        # Verifica se pelo menos um dos jogadores está com 0 vidas.
-        # Como as vidas começam em 0, essa condição será verdadeira, então será usada mais depois.
+        # Informa o encerramento da partida quando uma das condições for atendida.
         if vidajg1 == 0 or vidajg2 == 0:
             print("Jogo finalizado!")
 
-    # Verifica se o usuário escolheu visualizar as regras.
     elif opcao == 2:
 
-        print("-+" * 20)
+        # Exibe as regras e a mecânica básica do jogo.
+        print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
         print("REGRAS E MECÂNICA")
-        print("-+" * 20)
+        print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
-        # Explica o objetivo e o funcionamento básico do jogo.
         print("Objetivo: destruir todos os navios do adversário antes que ele destrua os seus.")
         print("Tabuleiro: cada jogador possui um tabuleiro com posições onde os navios ficam escondidos.")
         print("Ataque: em cada turno, o jogador escolhe uma coordenada para tentar acertar um navio.")
@@ -145,19 +145,20 @@ while opcao != 3:
         print("Turnos: os jogadores alternam suas jogadas até que a partida termine.")
         print("Vitória: vence quem destruir todos os navios do adversário primeiro.")
 
-        print("-+" * 20)
+        print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
-    # Verifica se o usuário escolheu sair do jogo.
     elif opcao == 3:
 
-        print("--" * 20)
+        # Encerra o menu quando o usuário escolhe sair.
+        print("----------------------------------------")
         print("Saindo do jogo...")
 
-    # Executa esta parte se o usuário digitar uma opção diferente de 1, 2 ou 3.
     else:
+
+        # Informa quando a opção digitada não corresponde ao menu.
         print("Opção inválida! Digite outra opção!")
 
-# Quando a opção 3 encerra o while, o programa chega a esta parte.
-print("-=" * 20)
+# Exibe a mensagem final após o encerramento do menu.
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 print("Jogo encerrado... Até mais!")
-print("-=" * 20)
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
