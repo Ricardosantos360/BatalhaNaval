@@ -1,6 +1,6 @@
 # Define as vidas iniciais dos jogadores e as variáveis de controle da partida.
 vidajg1 = vidajg2 = 4
-parimpar = ["", ""]
+parimpar1 = parimpar2 = ""
 vezjg = ""
 
 # Exibe o título do jogo.
@@ -35,13 +35,13 @@ while opcao != 3:
 
         # Solicita PAR ou IMPAR até que o primeiro jogador informe uma opção válida.
         # Também define a escolha oposta para o segundo jogador.
-        while parimpar[0] != "PAR" and parimpar[0] != "IMPAR":
-            parimpar[0] = input(f"Jogador {jg1}, escolha PAR ou IMPAR (escreva a resposta toda em maiúsculo): ")
-            if parimpar[0] == "PAR":
-                parimpar[1] = "IMPAR"
+        while parimpar1 != "PAR" and parimpar1 != "IMPAR":
+            parimpar1 = input(f"Jogador {jg1}, escolha PAR ou IMPAR (escreva a resposta toda em maiúsculo): ")
+            if parimpar1 == "PAR":
+                parimpar2 = "IMPAR"
                 print(f"Muito bem, o jogador {jg2} está com IMPAR!\n")
-            elif parimpar[0] == "IMPAR":
-                parimpar[1] = "PAR"
+            elif parimpar1 == "IMPAR":
+                parimpar2 = "PAR"
                 print(f"Muito bem, o jogador {jg2} está com PAR!\n")
             else:
                 print("OPÇÃO INVÁLIDA! Por favor, tente novamente!")
@@ -49,8 +49,8 @@ while opcao != 3:
         print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
         # Recebe os números escolhidos pelos jogadores e calcula o resto da soma por 2.
-        escolhajg1 = int(input(f"Jogador {jg1}, digite um número de 1 a 10: "))
-        escolhajg2 = int(input(f"Jogador {jg2} digite um número de 1 a 10: "))
+        escolhajg1 = int(input(f"Jogador {jg1}, digite um número: "))
+        escolhajg2 = int(input(f"Jogador {jg2} digite outro número: "))
         rst = (escolhajg1 + escolhajg2) % 2
 
         # O resto 0 indica PAR; o resto 1 indica IMPAR.
@@ -61,7 +61,7 @@ while opcao != 3:
             print("O resultado deu IMPAR!")
 
         # Compara o resultado com a escolha do primeiro jogador para definir quem começa.
-        if parimpar[0] == "PAR":
+        if parimpar1 == "PAR":
             if rst == 0:
                 vezjg = "jg1"
                 print(f"O jogador que vai iniciar a partida é o {jg1}!")
@@ -69,7 +69,7 @@ while opcao != 3:
                 vezjg = "jg2"
                 print(f"O jogador que vai iniciar a partida é o {jg2}!")
 
-        elif parimpar[0] == "IMPAR":
+        elif parimpar1== "IMPAR":
             if rst != 0:
                 vezjg = "jg1"
                 print(f"O jogador que vai iniciar a partida é o {jg1}!")
