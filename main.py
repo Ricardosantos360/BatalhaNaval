@@ -49,21 +49,50 @@ while opcao != 3:
         # Anuncia o início da partida.
         print(f"Muito bem, jogador {jg1} e jogador {jg2}, QUE COMECEM OS JOGOS!!!\n")
 
-        # Exibe o tabuleiro vazio do primeiro jogador.
+        #Define matrizes e variáveis para os tabuleiros
+        tabuleiro1 = [
+            ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+            ['B1', 'B2', 'B3', 'B4', 'B5', 'B6'],
+            ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'],
+            ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+            ['E1', 'E2', 'E3', 'E4', 'E5', 'E6'],
+            ['F1', 'F2', 'F3', 'F4', 'F5', 'F6']
+        ]
+
+        tabuleiro2 = [
+            ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+            ['B1', 'B2', 'B3', 'B4', 'B5', 'B6'],
+            ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'],
+            ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+            ['E1', 'E2', 'E3', 'E4', 'E5', 'E6'],
+            ['F1', 'F2', 'F3', 'F4', 'F5', 'F6']
+        ]
+
+        linhas = 'ABCDEF'
+        escolha = ''
+        navios1 = 0
+        navios2 = 0
+
+        # Apresenta o tabuleiro vazio do primeiro jogador.
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print(f"CARO JOGADOR {jg1}")
         print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print()
 
-        # Monta um tabuleiro vazio de 6 linhas por 6 colunas.
-        print("    1   2   3   4   5   6")
-        for i in range(6):
-            print(i + 1, end="  ")
-            for j in range(6):
-                print("[~]", end=" ")
+        # Cria visualmente um tabuleiro de 6 linhas por 6 colunas.
+        # O primeiro for controla as linhas e o segundo controla as colunas.
+        while navios1 < 6:
+            for i in range(6):
+                for j in range(6):
+                    posicao = tabuleiro1[i][j]
+                    if escolha == posicao:
+                        tabuleiro1[i][j] = 'x'
+                    print(f"[{tabuleiro1[i][j]}]", end=" ")
+                print()
             print()
-        print()
+            escolha = input(f"Posição do Navio {navios1 + 1}: ")
+            navios1 += 1
 
         # Exibe o tabuleiro vazio do segundo jogador.
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
@@ -72,14 +101,18 @@ while opcao != 3:
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print()
 
-        # Monta o segundo tabuleiro vazio de 6 linhas por 6 colunas.
-        print("    1   2   3   4   5   6")
-        for i in range(6):
-            print(i + 1, end="  ")
-            for j in range(6):
-                print("[~]", end=" ")
+        while navios2 < 6:
+            for i in range(6):
+                for j in range(6):
+                    posicao = tabuleiro1[i][j]
+                    if escolha == posicao:
+                        tabuleiro1[i][j] = 'x'
+                    print(f"[{tabuleiro2[i][j]}]", end=" ")
+                print()
             print()
-        print()
+            escolha = input(f"Posição do Navio {navios2 + 1}: ")
+            navios2 += 1
+
 
         # Mantém os turnos enquanto pelo menos um jogador tiver vidas.
         while vidajg1 > 0 or vidajg2 > 0:
@@ -94,10 +127,10 @@ while opcao != 3:
 
                 # Exibe o tabuleiro durante o turno do primeiro jogador.
                 print("    1   2   3   4   5   6")
+                print("    1   2   3   4   5   6")
                 for i in range(6):
-                    print(i + 1, end="  ")
                     for j in range(6):
-                        print("[~]", end=" ")
+                        print(f"[{tabuleiro2[i][j]}]", end=" ")
                     print()
                 print()
 
@@ -114,8 +147,8 @@ while opcao != 3:
 
                 # Exibe o tabuleiro durante o turno do segundo jogador.
                 print("    1   2   3   4   5   6")
-                for i in range(6):
-                    print(i + 1, end="  ")
+                for letra in linhas:
+                    print(letra, end="  ")
                     for j in range(6):
                         print("[~]", end=" ")
                     print()
