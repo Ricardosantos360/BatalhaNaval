@@ -1,7 +1,6 @@
 # Define as vidas iniciais dos jogadores e as variáveis de controle da partida.
 vidajg1 = vidajg2 = 4
-parimpar1 = parimpar2 = ""
-vezjg = ""
+parimpar1 = parimpar2 = vezjg = ""
 
 # Exibe o título do jogo.
 print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
