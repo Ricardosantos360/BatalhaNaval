@@ -104,97 +104,55 @@ while opcao != 3:
         escolha = ''
         navios1 = 0
         navios2 = 0
+        tentativajg1 = 0
+        tentativajg2 = 0
+        acertojg1 = 0
+        acertojg2 = 0
+        posicaol = 0
+        posicaoc = 0
 
-        # Apresenta o tabuleiro vazio do primeiro jogador e o segundo que começar, dependendo de quem foi escolhido.
-        if vezjg == "jg1":
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-            print(f"CARO JOGADOR {jg1}")
-            print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+        # Apresenta o tabuleiro vazio do primeiro jogador.
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+        print(f"CARO JOGADOR {jg1}")
+        print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+        print()
+
+        # Cria visualmente um tabuleiro de 6 linhas por 6 colunas.
+        # O primeiro for controla as linhas e o segundo controla as colunas.
+        while navios1 < 4:
+            for i in range(6):
+                for j in range(6):
+                    posicao = tabuleiro1[i][j]
+                    if escolha == posicao:
+                        tabuleiro1[i][j] = 'x'
+                    print(f"[{tabuleiro1[i][j]}]", end=" ")
+                print()
             print()
-
-            # Cria visualmente um tabuleiro de 6 linhas por 6 colunas.
-            # O primeiro for controla as linhas e o segundo controla as colunas.
-            while navios1 < 6:
-                for i in range(6):
-                    for j in range(6):
-                        posicao = tabuleiro1[i][j]
-                        if escolha == posicao:
-                            tabuleiro1[i][j] = 'x'
-                        print(f"[{tabuleiro1[i][j]}]", end=" ")
-                    print()
-                print()
-                escolha = input(f"Posição do Navio {navios1 + 1}: ")
-                navios1 += 1
-                print()
-            escolha = ""
-
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-            print(f"CARO JOGADOR {jg2}")
-            print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-            print()
-
-            while navios2 < 6:
-                for i in range(6):
-                    for j in range(6):
-                        posicao = tabuleiro2[i][j]
-                        if escolha == posicao:
-                            tabuleiro2[i][j] = 'x'
-                        print(f"[{tabuleiro2[i][j]}]", end=" ")
-                    print()
-                print()
-                escolha = input(f"Posição do Navio {navios2 + 1}: ")
-                navios2 += 1
-            escolha = ""
-
+            escolha = input(f"Posição do Navio {navios1 + 1}: ")
+            navios1 += 1
 
         # Apresenta o tabuleiro vazio do segundo jogador.
-        else:
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-            print(f"CARO JOGADOR {jg2}")
-            print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-            print()
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+        print(f"CARO JOGADOR {jg2}")
+        print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+        print()
 
-            while navios2 < 6:
-                for i in range(6):
-                    for j in range(6):
-                        posicao = tabuleiro2[i][j]
-                        if escolha == posicao:
-                            tabuleiro2[i][j] = 'x'
-                        print(f"[{tabuleiro2[i][j]}]", end=" ")
-                    print()
+        while navios2 < 4:
+            for i in range(6):
+                for j in range(6):
+                    posicao = tabuleiro2[i][j]
+                    if escolha == posicao:
+                        tabuleiro2[i][j] = 'x'
+                    print(f"[{tabuleiro2[i][j]}]", end=" ")
                 print()
-                escolha = input(f"Posição do Navio {navios2 + 1}: ")
-                navios2 += 1
-            escolha = ""
-
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-            print(f"CARO JOGADOR {jg1}")
-            print("POSICIONE OS SEUS BARCOS NA TABELA ABAIXO INFORMANDO SUAS POSIÇÕES")
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
             print()
+            escolha = input(f"Posição do Navio {navios2 + 1}: ")
+            navios2 += 1
 
-            # Cria visualmente um tabuleiro de 6 linhas por 6 colunas.
-            # O primeiro for controla as linhas e o segundo controla as colunas.
-            while navios1 < 6:
-                for i in range(6):
-                    for j in range(6):
-                        posicao = tabuleiro1[i][j]
-                        if escolha == posicao:
-                            tabuleiro1[i][j] = 'x'
-                        print(f"[{tabuleiro1[i][j]}]", end=" ")
-                    print()
-                print()
-                escolha = input(f"Posição do Navio {navios1 + 1}: ")
-                navios1 += 1
-            escolha = ""
-
-
-        ataquejg1 = ataquejg2 = ""
         # Repete os turnos enquanto pelo menos um jogador tiver vidas.
-        while vidajg1 > 0 and vidajg2 > 0:
+        while vidajg1 > 0 or vidajg2 > 0:
 
             if vezjg == "jg1":
 
@@ -206,17 +164,27 @@ while opcao != 3:
 
                 # Exibe o tabuleiro durante o turno do primeiro jogador.
                 print("    1   2   3   4   5   6")
-                for letra in linhas:
-                    print(letra, end="  ")
+                for i in range(6):
                     for j in range(6):
-                        print("[~]", end=" ")
+                        print(f"[{tabuleiro2[i][j]}]", end=" ")
                     print()
                 print()
 
-                # Recebe a coordenada de ataque do primeiro jogador.
-                ataquejg1 = input("COMANDO COORDENADA: ")
+                posicaol = int(input("Linha: "))
+                posicaoc = int(input("Coluna: "))
+                if(tabuleiro2[posicaol][posicaoc] == "x"):
+                    print("Parabéns você acertou um Navio Inimigo!")
+                    tentativajg1 += 1
+                    acertojg1 += 1
+                    vidajg2 -= 1
+                else:
+                    print("Você errou! Bomba na Água")
+                    tentativajg1 += 1
 
-            else:
+                # Recebe a coordenada de ataque do primeiro jogador.
+                ataquejg1 = input("COMANDO COORDENADA")
+
+            elif vezjg == "jg2":
 
                 print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                 print(f"TURNO DO JOGADOR: {jg2}")
@@ -226,40 +194,36 @@ while opcao != 3:
 
                 # Exibe o tabuleiro durante o turno do segundo jogador.
                 print("    1   2   3   4   5   6")
-                for letra in linhas:
-                    print(letra, end="  ")
+                for i in range(6):
                     for j in range(6):
-                        print("[~]", end=" ")
+                        print(f"[{tabuleiro1[i][j]}]", end=" ")
                     print()
                 print()
 
-                # Recebe a coordenada de ataque do segundo jogador.
-                ataquejg2 = input("COMANDO COORDENADA: ")
-
-            # Espaço reservado para implementar a análise das estatísticas dos jogadores.
-            if vezjg == "jg1":
-                if ataquejg1 == escolhajg2: #ALTERAR PARA VARIAVEL QUE VERIFIQUE AS COORDENADA DA POSIÇÃO RIVAL
-                    print("Parabéns! Você acertou um dos alvos do seu rival")
+                posicaol = int(input("Linha: "))
+                posicaoc = int(input("Coluna: "))
+                if(tabuleiro2[posicaol][posicaoc] == "x"):
+                    print("Parabéns você acertou um Navio Inimigo!")
+                    tentativajg1 += 1
+                    acertojg1 += 1
                     vidajg2 -= 1
                 else:
-                    print("Que pena, você errou, passando a vez...")
-            else:
-                if ataquejg2 == escolhajg1: #ALTERAR PARA VARIAVEL QUE VERIFIQUE AS COORDENADA DA POSIÇÃO RIVAL
-                    print("Parabéns! Você acertou um dos alvos do seu rival")
-                    vidajg1 -= 1
-                else:
-                    print("Que pena, você errou, passando a vez...")
+                    print("Você errou! Bomba na Água")
+                    tentativajg1 += 1
+
+                # Recebe a coordenada de ataque do segundo jogador.
+                ataquejg2 = input("COMANDO COORDENADA")
+
 
             if vezjg == "jg1":
                 vezjg = "jg2"
             else:
                 vezjg = "jg1"
+            # Espaço reservado para implementar a análise das estatísticas dos jogadores.
 
         # Verifica se pelo menos um jogador chegou a zero vidas para encerrar a partida.
         if vidajg1 == 0 or vidajg2 == 0:
             print("Jogo finalizado!")
-            if vidajg1 == 0:
-                print(f"Jogador 1 ({jg1}) eliminado, Jogador 2 {jg2} FOI O VENCEDOR!!! ")
 
     elif opcao == 2:
 
