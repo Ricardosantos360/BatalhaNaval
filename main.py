@@ -22,7 +22,7 @@ while opcao != 3:
     # Recebe a opção digitada e converte o texto para um número inteiro.
     opcao = int(input("Digite sua escolha: "))
 
-    if opcao == 1:
+    if opcao == 1 or opcaofim == 1:
 
         print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
@@ -132,6 +132,8 @@ while opcao != 3:
             escolha = input(f"Posição do Navio {navios1 + 1}: ")
             navios1 += 1
 
+        escolha = ""
+        
         # Apresenta o tabuleiro vazio do segundo jogador.
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         print(f"CARO JOGADOR {jg2}")
@@ -181,6 +183,7 @@ while opcao != 3:
                     print("Você errou! Bomba na Água")
                     tentativajg1 += 1
 
+            # Possivel correção de linha / remoção
                 # Recebe a coordenada de ataque do primeiro jogador.
                 ataquejg1 = input("COMANDO COORDENADA")
 
@@ -206,7 +209,7 @@ while opcao != 3:
                     print("Parabéns você acertou um Navio Inimigo!")
                     tentativajg1 += 1
                     acertojg1 += 1
-                    vidajg2 -= 1
+                    vidajg1 -= 1
                 else:
                     print("Você errou! Bomba na Água")
                     tentativajg1 += 1
@@ -220,10 +223,43 @@ while opcao != 3:
             else:
                 vezjg = "jg1"
             # Espaço reservado para implementar a análise das estatísticas dos jogadores.
+        
+            # Verifica se pelo menos um jogador chegou a zero vidas para encerrar a partida.
+            if vidajg1 == 0 or vidajg2 == 0:
 
-        # Verifica se pelo menos um jogador chegou a zero vidas para encerrar a partida.
-        if vidajg1 == 0 or vidajg2 == 0:
-            print("Jogo finalizado!")
+                # Encer
+                vidajg1 = vidajg2 = 0
+
+                print("Jogo finalizado!")
+                print()
+
+                # Mantém o menu de fim de jogo ativo até que o usuário escolha a opção 3.
+                opcaofim = 0
+
+                while opcaofim != 1 and opcaofim != 3 :
+                    print("Gostaria de jogar novamente ou deseja sair ?")
+                    print("[ 1 ] Jogar Novamente")
+                    print("[ 2 ] Tabela de Pontos")
+                    print("[ 3 ] Sair")
+                    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+
+                    opcaofim = int(input("Digite sua escolha: "))
+
+                    if opcaofim == 1:
+                        opcao = 1
+
+                    elif opcaofim == 2:
+                        # Menu de pontuação dos jogadores
+                        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+                        print("Tabela de pontos de cada jogador")
+                        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+
+                    elif opcaofim == 3:
+                        opcao = 3
+
+                    else:
+                        print("Opção inválida! Digite outra opção!")
+                        print()
 
     elif opcao == 2:
 
