@@ -143,8 +143,11 @@ while opcao != 3:
         # Repete o posicionamento até que os quatro navios sejam informados.
         while navios1 < 4:
 
+            print("    0    1    2    3    4    5")
+
             # Percorre as seis linhas e as seis colunas da matriz.
             for i in range(6):
+                print(f"{i}", end=" ")
                 for j in range(6):
 
                     # Obtém a posição atual do tabuleiro.
@@ -167,6 +170,10 @@ while opcao != 3:
 
             # Atualiza o contador de navios posicionados.
             navios1 += 1
+        print()
+        print()
+        print()
+        print()
 
         # Limpa a variável antes de iniciar o posicionamento do segundo jogador.
         escolha = ""
@@ -181,7 +188,10 @@ while opcao != 3:
         # Repete o processo de posicionamento para o segundo tabuleiro.
         while navios2 < 4:
 
+            print("   0    1    2    3    4    5")
+
             for i in range(6):
+                print(f"{i}", end=" ")
                 for j in range(6):
 
                     # Obtém a posição atual do segundo tabuleiro.
@@ -201,6 +211,9 @@ while opcao != 3:
 
             # Atualiza o contador de navios posicionados.
             navios2 += 1
+        print()
+        print()
+        print()
 
         # Mantém a partida ativa enquanto os dois jogadores ainda tiverem navios.
         # Quando um deles chegar a zero, a condição será falsa e a partida terminará.
@@ -216,18 +229,20 @@ while opcao != 3:
                 print()
 
                 # Mostra o tabuleiro do adversário, onde estão os navios a serem atingidos.
-                print("    1   2   3   4   5   6")
+                print("   0   1   2   3   4   5")
 
                 for i in range(6):
+                    print(f"{i}", end=" ")
                     for j in range(6):
-                        print(f"[{tabuleiro2[i][j]}]", end=" ")
+                        print("[~]", end=" ")
                     print()
 
                 print()
 
                 # Recebe os índices da linha e da coluna escolhidas para o ataque.
-                posicaol = int(input("Digite a coordenada da LINHA que queira atacar: "))
-                posicaoc = int(input("Digite a coordenada da COLUNA que queira atacar: "))
+                while posicaoc and posicaol != 0 :
+                    posicaol = int(input("Digite a coordenada da LINHA que queira atacar: "))
+                    posicaoc = int(input("Digite a coordenada da COLUNA que queira atacar: "))
 
                 # Verifica se a posição escolhida contém um navio.
                 if tabuleiro2[posicaol][posicaoc] == "x":
@@ -236,6 +251,9 @@ while opcao != 3:
                     barcosjg2 -= 1
 
                     print(f"Parabéns você acertou um Navio Inimigo! Faltam {barcosjg2} serem derrubados para a vitória!")
+
+                     # Faz com que o usuario não consiga acerta o mesmo barco varia vezes
+                    tabuleiro2[posicaol][posicaoc] = "AC"
 
                     # Atualiza as estatísticas do primeiro jogador.
                     tentativajg1 += 1
@@ -260,11 +278,12 @@ while opcao != 3:
                 print()
 
                 # Mostra o tabuleiro do primeiro jogador.
-                print("    1   2   3   4   5   6")
+                print("   0   1   2   3   4   5")
 
                 for i in range(6):
+                    print(f"{i}", end=" ")
                     for j in range(6):
-                        print(f"[{tabuleiro1[i][j]}]", end=" ")
+                        print("[~]", end=" ")
                     print()
 
                 print()
@@ -280,6 +299,9 @@ while opcao != 3:
                     barcosjg1 -= 1
 
                     print(f"Parabéns você acertou um Navio Inimigo! Faltam {barcosjg1} serem derrubados para a vitória!")
+
+                    # Faz com que o usuario não consiga acerta o mesmo barco varia vezes
+                    tabuleiro1[posicaol][posicaoc] = "AC"
 
                     # Atualiza as estatísticas do jogador.
                     tentativajg2 += 1
