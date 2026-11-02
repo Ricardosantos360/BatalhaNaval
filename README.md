@@ -23,6 +23,29 @@ Para definir qual jogador inicia atacando sem desrespeitar a regra de não usar 
 4. O sistema compara com a escolha inicial e define dinamicamente a variável `vezjg`.
 
 ### 2. A Lógica dos Tabuleiros (Matriz 6x6)
-Os tabuleiros de jogo foram criados como matrizes por extenso de tamanho 6x6. Para facilitar a localização por parte dos jogadores humanos, preenchemos inicialmente cada posição com strings amigáveis que misturam letras e números (de `'A1'` até `'F6'`). 
+Os tabuleiros de jogo foram criados como matrizes por extenso de tamanho 6x6. Para facilitar a localização por parte dos jogadores, preenchemos inicialmente cada posição com strings que misturam letras e números (de `'A1'` até `'F6'`). 
 * Na fase de posicionamento, o jogador escolhe a casa digitando esse texto (ex: `"C3"`).
 * O programa faz uma varredura com um laço `for` na matriz e, ao encontrar a casa equivalente, substitui o texto pelo caractere `'x'`, que representa um barco guardado com sucesso.
+
+## 📜 Regras e Mecânica Oficial (Extraído do Sistema)
+Com base nas diretrizes internas implementadas no código da nossa partida, o jogo segue o seguinte regulamento de engajamento:
+*   **Objetivo:** Destruir todos os navios do adversário antes que ele destrua os seus.
+*   **Tabuleiro:** Cada jogador possui um tabuleiro (Matriz 6x6) com posições indexadas de 0 a 5 onde os navios ficam escondidos.
+*   **Ataque:** Em cada turno, o jogador escolhe uma coordenada para tentar acertar um navio.
+*   **Acerto:** Se atingir um navio, o jogador rival perde um barco no mar (a casa é marcada como `"AC"`).
+*   **Erro:** Se não atingir nenhum navio, a jogada é considerada uma tentativa perdida.
+*   **Turnos:** Os jogadores alternam suas jogadas de forma automatizada até o fim da partida.
+*   **Vitória:** Vence quem destruir todos os 4 navios do adversário primeiro.
+
+## 🎯 Desafio de Lógica Escolhido
+Implementamos o desafio **"Estatísticas da Sessão ao Sair"**. Quando o menu principal recebe o comando de encerramento (`3`), o sistema compila os dados persistentes de todas as rodadas executadas, apresentando:
+* Número de tentativas.
+* Números de acertos.
+* Número de erros.
+* Quem foi o vencedor da última partida.
+
+## 🛠️ Como Executar o Jogo
+1. Certifique-se de possuir o interpretador do **Python 3** instalado em seu ambiente.
+2. Faça o clone deste repositório ou realize o download do arquivo `main.py`.
+3. Abra a janela de terminal ou PowerShell na pasta raiz correspondente ao arquivo e execute o programa.
+  

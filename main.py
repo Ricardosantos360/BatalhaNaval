@@ -126,9 +126,10 @@ while opcao != 3:
         # Contabiliza a quantidade de navios posicionados por cada jogador.
         navios1 = navios2 = 0
 
-        # Registra a quantidade de tentativas e acertos de cada jogador.
+        # Registra a quantidade de tentativas, acertos e erros de cada jogador.
         tentativajg1 = tentativajg2 = 0
         acertojg1 = acertojg2 = 0
+        errojg1 = errojg2 = 0
 
         # Armazena temporariamente as coordenadas de linha e coluna.
         posicaol = posicaoc = 0
@@ -153,10 +154,6 @@ while opcao != 3:
                     # Obtém a posição atual do tabuleiro.
                     posicao = tabuleiro1[i][j]
 
-                    # Marca a posição escolhida com 'x'.
-                    if escolha == posicao:
-                        tabuleiro1[i][j] = 'x'
-
                     # end=" " mantém as posições da mesma linha lado a lado.
                     print(f"[{tabuleiro1[i][j]}]", end=" ")
 
@@ -167,6 +164,17 @@ while opcao != 3:
 
             # Solicita a coordenada do próximo navio.
             escolha = input(f"Posição do Navio {navios1 + 1}: ")
+
+            for i in range(6):
+                for j in range(6):
+
+                    # Obtém a posição atual do tabuleiro.
+                    posicao = tabuleiro1[i][j]
+
+                    # Marca a posição escolhida com 'x'.
+                    if escolha == posicao:
+                        tabuleiro1[i][j] = 'x'
+            
 
             # Atualiza o contador de navios posicionados.
             navios1 += 1
@@ -190,24 +198,35 @@ while opcao != 3:
 
             print("   0    1    2    3    4    5")
 
+            # Percorre as seis linhas e as seis colunas da matriz.
             for i in range(6):
                 print(f"{i}", end=" ")
                 for j in range(6):
 
-                    # Obtém a posição atual do segundo tabuleiro.
+                    # Obtém a posição atual do tabuleiro.
+                    posicao = tabuleiro2[i][j]
+
+                    # end=" " mantém as posições da mesma linha lado a lado.
+                    print(f"[{tabuleiro2[i][j]}]", end=" ")
+
+                # Pula uma linha após exibir todas as colunas.
+                print()
+
+            print()
+
+            # Solicita a coordenada do próximo navio.
+            escolha = input(f"Posição do Navio {navios2 + 1}: ")
+
+            for i in range(6):
+                for j in range(6):
+
+                    # Obtém a posição atual do tabuleiro.
                     posicao = tabuleiro2[i][j]
 
                     # Marca a posição escolhida com 'x'.
                     if escolha == posicao:
                         tabuleiro2[i][j] = 'x'
-
-                    print(f"[{tabuleiro2[i][j]}]", end=" ")
-
-                print()
-
-            print()
-
-            escolha = input(f"Posição do Navio {navios2 + 1}: ")
+                    
 
             # Atualiza o contador de navios posicionados.
             navios2 += 1
@@ -240,9 +259,25 @@ while opcao != 3:
                 print()
 
                 # Recebe os índices da linha e da coluna escolhidas para o ataque.
-                while posicaoc and posicaol != 0 :
-                    posicaol = int(input("Digite a coordenada da LINHA que queira atacar: "))
-                    posicaoc = int(input("Digite a coordenada da COLUNA que queira atacar: "))
+                valida_l = False
+                while valida_l == False:
+                    entrada_l = input("Digite a coordenada da LINHA que queira atacar (0-5): ")
+                    for n in range(0, 6):
+                        if entrada_l == str(n):
+                            posicaol = n
+                            valida_l = True
+                    if valida_l == False:
+                        print("Coordenada inválida! Digite apenas um número de 0 a 5.")
+
+                valida_c = False
+                while valida_c == False:
+                    entrada_c = input("Digite a coordenada da COLUNA que queira atacar (0-5): ")
+                    for n in range(0, 6):
+                        if entrada_c == str(n):
+                            posicaoc = n
+                            valida_c = True
+                    if valida_c == False:
+                        print("Coordenada inválida! Digite apenas um número de 0 a 5.")
 
                 # Verifica se a posição escolhida contém um navio.
                 if tabuleiro2[posicaol][posicaoc] == "x":
@@ -263,6 +298,7 @@ while opcao != 3:
                     # Em caso de erro, registra somente a tentativa.
                     print("Você errou! Bomba na Água, passando a vez...")
                     tentativajg1 += 1
+                    errojg1 += 1
 
                 # Reinicia as variáveis auxiliares das coordenadas.
                 posicaol = 0
@@ -288,9 +324,32 @@ while opcao != 3:
 
                 print()
 
-                # Recebe as coordenadas do ataque do segundo jogador.
-                posicaol = int(input("Linha: "))
-                posicaoc = int(input("Coluna: "))
+                valida_l = False
+                while valida_l == False:
+                    # Lemos o input puro como texto (string), o que nunca quebra o código
+                    entrada_l = input("Linha (0-5): ")
+                    
+                    # Varremos os números válidos e transformamos em texto para comparar
+                    for n in range(0, 6): # Testa de "0" até "5"
+                        if entrada_l == str(n):
+                            valida_l = True
+                            posicaol = n # Guarda o número inteiro de forma segura
+                            
+                    if valida_l == False:
+                        print("Coordenada inválida! Digite apenas um número de 0 a 5.")
+
+                valida_c = False
+                while valida_c == False:
+                    entrada_c = input("Coluna (0-5): ")
+                    
+                    for n in range(0, 6):
+                        if entrada_c == str(n):
+                            valida_c = True
+                            posicaoc = n
+                            
+                    if valida_c == False:
+                        print("Coordenada inválida! Digite apenas um número de 0 a 5.")
+
 
                 # Verifica se a posição escolhida contém um navio.
                 if tabuleiro1[posicaol][posicaoc] == "x":
@@ -310,7 +369,8 @@ while opcao != 3:
                 else:
                     # Em caso de erro, registra somente a tentativa.
                     print("Você errou! Bomba na Água, passando a vez")
-                    tentativajg1 += 1
+                    tentativajg2 += 1
+                    errojg2 += 1
 
                 # Reinicia as variáveis auxiliares das coordenadas.
                 posicaol = 0
@@ -342,20 +402,25 @@ while opcao != 3:
 
                 # Exibe as opções disponíveis após o encerramento da partida.
                 # A opção 1 retorna ao menu principal; a opção 2 mostra as estatísticas.
-                while opcao != 1:
+                opcaofim = 0 
+
+                while opcaofim != 1:
 
                     print("Gostaria de voltar ao menu principal (para começar novamente ou sair) ou deseja ver as estastisticas gerais?")
                     print("[ 1 ] Voltar o menu principal")
                     print("[ 2 ] Tabela de Pontos")
                     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 
-                    opcao = int(input("Digite sua escolha: "))
+                    opcaofim = int(input("Digite sua escolha: "))
+                    print()
 
-                    if opcao == 1:
+                    if opcaofim == 1:
                         print("Tudo bem, voltando ao Menu principal!")
+                        opcao = 1
+                        print()
                         break
 
-                    elif opcao == 2:
+                    elif opcaofim == 2:
 
                         # Apresenta o resumo das estatísticas da partida.
                         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
@@ -366,6 +431,7 @@ while opcao != 3:
                         print(f"Jogador: {jg1}")
                         print(f"Tentativas: {tentativajg1}")
                         print(f"Acertos: {acertojg1}")
+                        print(f"Erros: {errojg1}")
 
                         if vitoriajogador == "jg1":
                             print("VENCEDOR da última partida!")
@@ -378,6 +444,7 @@ while opcao != 3:
                         print(f"Jogador: {jg2}")
                         print(f"Tentativas: {tentativajg2}")
                         print(f"Acertos: {acertojg2}")
+                        print(f"Erros: {errojg2}")
 
                         if vitoriajogador == "jg2":
                             print("VENCEDOR da última partida!")
@@ -390,7 +457,7 @@ while opcao != 3:
 
                     else:
                         # Solicita uma nova escolha caso a opção seja inválida.
-                        opcao = int(input("Opção inválida! Digite outra opção: "))
+                        opcaofim = int(input("Opção inválida! Digite outra opção: "))
 
     elif opcao == 2:
 
