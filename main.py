@@ -16,7 +16,17 @@ while opcao != 3:
     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 
     # O input recebe a escolha como texto, e int converte o valor para inteiro.
-    opcao = int(input("Digite sua escolha: "))
+    valido = False
+    while valido == False:
+        opcao_verif = input("Digite sua escolha: ")
+        opcoes_validas = ('1', '2', '3')
+        if opcao_verif in opcoes_validas:
+            opcao = int(opcao_verif)
+            valido = True
+        else:
+            print("Opção Inválida.")
+        
+
 
     if opcao == 1:
 
@@ -55,8 +65,27 @@ while opcao != 3:
         print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
         # Recebe um número de cada jogador.
-        escolhajg1 = int(input(f"Jogador {jg1}, digite um número: "))
-        escolhajg2 = int(input(f"Jogador {jg2} digite outro número: "))
+        valida = False
+        while valida == False:
+            entrada = input(f"Jogador {jg1}, digite um número(de 0 a 9): ")
+            for n in range(0, 10):
+                if entrada == str(n):
+                    valida = True
+                    escolhajg1 = n
+            if valida == False:
+                print("Opção inválida.")
+
+        valida = False
+        while valida == False:
+            entrada = input(f"Jogador {jg2} digite outro número(de 0 a 9): ")
+            for n in range(0, 10):
+                if entrada == str(n):
+                    valida = True
+                    escolhajg2 = n
+            if valida == False:
+                print("Opção inválida.")
+            
+
 
         # O operador % calcula o resto da divisão.
         # O resto 0 representa PAR, enquanto o resto 1 representa IMPAR.
@@ -160,7 +189,14 @@ while opcao != 3:
             print()
 
             # Solicita a coordenada do próximo navio.
-            escolha = input(f"Posição do Navio {navios1 + 1}: ")
+            is_valida = False
+            while is_valida != True:
+                escolha = input(f"Posição do Navio {navios2 + 1}: ")
+                for i in range(6):
+                    for j in range(6):
+                        if escolha == tabuleiro2[i][j]:
+                            is_valida = True
+                print("Posição inválida!")
 
             for i in range(6):
                 for j in range(6):
@@ -212,7 +248,15 @@ while opcao != 3:
             print()
 
             # Solicita a coordenada do próximo navio.
-            escolha = input(f"Posição do Navio {navios2 + 1}: ")
+            is_valida = False
+            while is_valida != True:
+                escolha = input(f"Posição do Navio {navios2 + 1}: ")
+                for i in range(6):
+                    for j in range(6):
+                        if escolha == tabuleiro2[i][j]:
+                            is_valida = True
+                print("Posição inválida!")
+            
 
             for i in range(6):
                 for j in range(6):
@@ -227,6 +271,25 @@ while opcao != 3:
 
             # Atualiza o contador de navios posicionados.
             navios2 += 1
+
+            print("   0    1    2    3    4    5")
+
+            # Percorre as seis linhas e as seis colunas da matriz.
+            for i in range(6):
+                print(f"{i}", end=" ")
+                for j in range(6):
+
+                    # Obtém a posição atual do tabuleiro.
+                    posicao = tabuleiro2[i][j]
+
+                    # end=" " mantém as posições da mesma linha lado a lado.
+                    print(f"[{tabuleiro2[i][j]}]", end=" ")
+
+                # Pula uma linha após exibir todas as colunas.
+                print()
+
+            print()
+
         print()
         print()
         print()
@@ -404,7 +467,7 @@ while opcao != 3:
                 while opcaofim != 1:
 
                     print("Gostaria de voltar ao menu principal (para começar novamente ou sair) ou deseja ver as estastisticas gerais?")
-                    print("[ 1 ] Voltar o menu principal")
+                    print("[ 1 ] Voltar para o menu principal")
                     print("[ 2 ] Tabela de Pontos")
                     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 
