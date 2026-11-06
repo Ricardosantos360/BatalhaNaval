@@ -31,7 +31,7 @@ while opcao != 3:
                 valido = True
 
         if not valido:
-            print("Opção inválida!")
+            print("Opção inválida! Digite uma das opções")
 
 
     if opcao == 1:
@@ -81,11 +81,12 @@ while opcao != 3:
                         escolhajg1 = n
 
                 if not valida:
-                    print("Opção inválida.")
+                    print("Opção inválida. Digite um número entre 0 e 9")
 
             valida = False
-
+            print("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
             while not valida:
+
                 entrada = input(f"Jogador {jg2}, digite um número (de 0 a 9): ")
 
                 for n in range(0, 10):
@@ -94,7 +95,7 @@ while opcao != 3:
                         escolhajg2 = n
 
                 if not valida:
-                    print("Opção inválida.")
+                    print("Opção inválida. Digite um número entre 0 e 9")
 
 
             # Calcula o resto da divisão da soma por 2 para identificar PAR ou IMPAR.
@@ -113,25 +114,29 @@ while opcao != 3:
                 if rst == 0:
                     vezjg = "jg1"
                     print(f"O jogador que vai iniciar a partida é o {jg1}!")
+                    print()
 
                 else:
                     vezjg = "jg2"
                     print(f"O jogador que vai iniciar a partida é o {jg2}!")
+                    print()
 
             elif parimpar1== "IMPAR":
 
                 if rst != 0:
                     vezjg = "jg1"
                     print(f"O jogador que vai iniciar a partida é o {jg1}!")
+                    print()
 
                 else:
                     vezjg = "jg2"
                     print(f"O jogador que vai iniciar a partida é o {jg2}!")
+                    print()
 
             print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 
             # Anuncia o início da partida.
-            print(f"Muito bem, jogador {jg1} e jogador {jg2}, QUE COMECEM OS JOGOS!!!\n")
+            print(f"Muito bem, jogador {jg1} e jogador {jg2}, QUE COMECEM OS JOGOS!!!")
 
             # Cria os tabuleiros dos jogadores com coordenadas de 00 a 55.
             tabuleiro1 = [
@@ -448,8 +453,6 @@ while opcao != 3:
                     # Atualiza o total de partidas realizadas durante a sessão.
                     totalpartidas += 1
 
-                    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-
                     # Apresenta as opções disponíveis após o encerramento da partida.
                     opcaofim = 0
                     menu_final = True
@@ -486,7 +489,7 @@ while opcao != 3:
 
                         # Exibe as estatísticas acumuladas e os resultados da última partida.
                         elif opcaofim == 2:
-
+                            print()
                             print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
                             print("ESTATÍSTICAS GERAIS")
                             print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
@@ -500,6 +503,7 @@ while opcao != 3:
                             print(f"Tentativas do Jogador 2 no jogo: {tentativajg2}")
                             print(f"Acertos do Jogador 2 no jogo: {acertojg2}")
                             print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+                            print()
 
                         # Retorna ao menu principal para cadastrar novos jogadores.
                         elif opcaofim == 3:
