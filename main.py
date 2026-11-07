@@ -269,16 +269,6 @@ while opcao != 3:
                 navios2 += 1
 
                 # Exibe o tabuleiro após o posicionamento do navio.
-                print("   0    1    2    3    4    5")
-
-                for i in range(6):
-                    print(f"{i}", end=" ")
-                    for j in range(6):
-                        print(f"[{tabuleiro2[i][j]}]", end=" ")
-
-                    print()
-
-                print()
 
             print()
             print()
