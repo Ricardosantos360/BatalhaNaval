@@ -23,8 +23,8 @@ Para definir qual jogador inicia atacando sem desrespeitar a regra de não usar 
 4. O sistema compara com a escolha inicial e define dinamicamente a variável `vezjg`.
 
 ### 2. A Lógica dos Tabuleiros (Matriz 6x6)
-Os tabuleiros de jogo foram criados como matrizes por extenso de tamanho 6x6. Para facilitar a localização por parte dos jogadores, preenchemos inicialmente cada posição com strings que misturam letras e números (de `'A1'` até `'F6'`). 
-* Na fase de posicionamento, o jogador escolhe a casa digitando esse texto (ex: `"C3"`).
+Os tabuleiros de jogo foram criados como matrizes por extenso de tamanho 6x6. Para facilitar a localização por parte dos jogadores, preenchemos inicialmente cada posição com strings que misturam números de linhas e colunas (de `'00'` até `'55'`). 
+* Na fase de posicionamento, o jogador escolhe a casa digitando esse texto (ex: `"03"`).
 * O programa faz uma varredura com um laço `for` na matriz e, ao encontrar a casa equivalente, substitui o texto pelo caractere `'x'`, que representa um barco guardado com sucesso.
 
 ## 📜 Regras e Mecânica Oficial (Extraído do Sistema)
